@@ -7,13 +7,16 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import com.vd.spring.hibernate.jpa.repository.VRepositoryImpl;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {
-        "com.vd.spring.hibernate.jpa.dao"
-})
+        "com.vd.spring.hibernate.jpa.repository"
+}, repositoryBaseClass = VRepositoryImpl.class)
+@EntityScan("com.vd.spring.hibernate.jpa.model")
 public class DatabaseConfig {
 
     @Value("${db.driver}")
