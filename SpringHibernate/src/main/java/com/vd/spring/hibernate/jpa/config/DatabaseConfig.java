@@ -1,25 +1,26 @@
 package com.vd.spring.hibernate.jpa.config;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import com.vd.spring.hibernate.jpa.repository.VRepositoryImpl;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-@Configuration
+/*@Configuration
 @EnableJpaRepositories(basePackages = {
         "com.vd.spring.hibernate.jpa.repository"
-}, repositoryBaseClass = VRepositoryImpl.class)
-@EntityScan("com.vd.spring.hibernate.jpa.model")
+})*/
 public class DatabaseConfig {
 
-    @Value("${db.driver}")
+    /*@Value("${db.driver}")
     private String DB_DRIVER;
 
     @Value("${db.password}")
@@ -99,5 +100,5 @@ public class DatabaseConfig {
         sessionFactoryBean.setHibernateProperties(hibernateProperties);
 
         return sessionFactoryBean;
-    }
+    }*/
 }

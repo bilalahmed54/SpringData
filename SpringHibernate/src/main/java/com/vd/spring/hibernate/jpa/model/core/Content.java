@@ -1,14 +1,11 @@
-package com.vd.spring.hibernate.jpa.model;
+package com.vd.spring.hibernate.jpa.model.core;
 
 import javax.persistence.*;
+import com.vd.spring.hibernate.jpa.model.Identifiable;
 
 @Entity
 @Table(name = "content")
-public class Content {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Content extends Identifiable {
 
     private String name;
     private String description;
@@ -21,14 +18,6 @@ public class Content {
     public Content(String name, String description) {
         this.name = name;
         this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
