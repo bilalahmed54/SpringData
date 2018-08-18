@@ -1,18 +1,14 @@
 package com.vd.spring.hibernate.jpa.model.core;
 
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
-import com.vd.spring.hibernate.jpa.model.Identifiable;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
+import java.util.ArrayList;
+import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 
 @Entity
 @Table(name = "user")
-public class User extends Identifiable {
+public class User extends BaseDomainModel {
 
     @Column(name = "name", nullable = false, unique = false)
     private String name;
@@ -35,23 +31,25 @@ public class User extends Identifiable {
     @Column(name = "location", nullable = false, unique = false)
     private String location;
 
-    @CreatedDate
-    private Date createdDate;
-
-    @LastModifiedDate
-    private Date lastModifiedDate;
+    @OneToMany
+    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "content_user_id")
+            , inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<ContentUser> userContentsList;
 
     public User() {
+        this.userContentsList = new ArrayList<>();
     }
 
     public User(String name, String password, String role, String email, String gender, Date dateOfBirth, String location) {
+
         this.name = name;
-        this.password = password;
         this.role = role;
         this.email = email;
         this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
         this.location = location;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.userContentsList = new ArrayList<>();
     }
 
     public String getName() {
@@ -108,5 +106,17 @@ public class User extends Identifiable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<ContentUser> getUserContentsList() {
+        return userContentsList;
+    }
+
+    public void setUserContentsList(List<ContentUser> userContentsList) {
+        this.userContentsList = userContentsList;
+    }
+
+    public void addUserContentsList(ContentUser contentUser) {
+        userContentsList.add(contentUser);
     }
 }

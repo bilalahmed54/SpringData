@@ -1,13 +1,14 @@
 package com.vd.spring.hibernate.jpa.model.core;
 
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import com.vd.spring.hibernate.jpa.model.Identifiable;
+import java.util.List;
+import java.util.ArrayList;
+import javax.persistence.*;
+
+import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 
 @Entity
 @Table(name = "project")
-public class Project extends Identifiable {
+public class Project extends BaseDomainModel {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
@@ -15,11 +16,19 @@ public class Project extends Identifiable {
     @Column(name = "description", nullable = true, unique = false)
     private String description;
 
+    @OneToMany
+    @JoinTable(name = "content", joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Content> videos;
+
     public Project() {
+        videos = new ArrayList<>();
     }
 
     public Project(String name, String description) {
+
         this.name = name;
+        videos = new ArrayList<>();
         this.description = description;
     }
 
@@ -37,5 +46,17 @@ public class Project extends Identifiable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Content> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(List<Content> videos) {
+        this.videos = videos;
+    }
+
+    public void addVideo(Content video) {
+        this.videos.add(video);
     }
 }
