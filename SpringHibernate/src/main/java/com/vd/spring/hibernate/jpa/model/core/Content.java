@@ -3,7 +3,6 @@ package com.vd.spring.hibernate.jpa.model.core;
 import java.util.List;
 import javax.persistence.*;
 import java.util.ArrayList;
-
 import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 
 @Entity
@@ -17,7 +16,7 @@ public class Content extends BaseDomainModel {
     private String description;
 
     @OneToMany
-    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "content_user_id"),
+    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "content_id"))
     private List<ContentUser> contentUserList;
 

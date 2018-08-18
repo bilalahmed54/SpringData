@@ -3,7 +3,6 @@ package com.vd.spring.hibernate.jpa.model.core;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
-
 import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 
 @Entity

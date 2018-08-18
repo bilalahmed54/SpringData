@@ -1,9 +1,6 @@
 package com.vd.spring.hibernate.jpa.model.core;
 
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 
 @Entity
@@ -12,6 +9,10 @@ public class ContentFeedbackResponse extends BaseDomainModel {
 
     @Column(name = "response", nullable = false)
     private String response;
+
+    @ManyToOne
+    @JoinColumn(name = "content_user_id")
+    private  ContentUser contentUser;
 
     @OneToOne
     private ContentFeedbackQuestion contentFeedbackQuestion;

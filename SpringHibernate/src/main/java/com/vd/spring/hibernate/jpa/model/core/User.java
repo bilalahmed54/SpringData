@@ -32,7 +32,7 @@ public class User extends BaseDomainModel {
     private String location;
 
     @OneToMany
-    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "content_user_id")
+    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id")
             , inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<ContentUser> userContentsList;
 
