@@ -39,4 +39,16 @@ public class ContentFeedbackResponse extends BaseDomainModel {
     public void addContentFeedbackQuestion(ContentFeedbackQuestion contentFeedbackQuestion) {
         this.contentFeedbackQuestion = contentFeedbackQuestion;
     }
+
+    public ContentUser getContentUser() {
+        return contentUser;
+    }
+
+    public void setContentUser(ContentUser contentUser) {
+        this.contentUser = contentUser;
+    }
+
+    public void setContentFeedbackQuestion(ContentFeedbackQuestion contentFeedbackQuestion) {
+        this.contentFeedbackQuestion = contentFeedbackQuestion;
+    }
 }

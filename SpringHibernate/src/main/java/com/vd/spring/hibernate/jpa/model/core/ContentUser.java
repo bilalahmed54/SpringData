@@ -9,11 +9,11 @@ import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 @Table(name = "content_user")
 public class ContentUser extends BaseDomainModel {
 
-    @Column(name = "content_evaluaton_status", nullable = false)
-    int contentEvaluatonStatus;
+    @Column(name = "content_evaluation_status", nullable = false)
+    private int contentEvaluationStatus;
 
     @Column(name = "content_circle_type", nullable = false)
-    String contentCircleType;
+    private String contentCircleType;
 
     @Column(name = "video_feedback_url", nullable = true)
     private String videoFeedbackUrl;
@@ -35,7 +35,13 @@ public class ContentUser extends BaseDomainModel {
     private List<ContentFeedbackResponse> contentFeedbackResponseList;
 
     public ContentUser() {
-        contentFeedbackResponseList = new ArrayList<>();
+        this.contentFeedbackResponseList = new ArrayList<>();
+    }
+
+    public ContentUser(int contentEvaluationStatus, String contentCircleType) {
+        this.contentCircleType = contentCircleType;
+        this.contentEvaluationStatus = contentEvaluationStatus;
+        this.contentFeedbackResponseList = new ArrayList<>();
     }
 
     public String getVideoFeedbackUrl() {
@@ -68,6 +74,22 @@ public class ContentUser extends BaseDomainModel {
 
     public void setContent(Content content) {
         this.content = content;
+    }
+
+    public String getContentCircleType() {
+        return contentCircleType;
+    }
+
+    public void setContentCircleType(String contentCircleType) {
+        this.contentCircleType = contentCircleType;
+    }
+
+    public int getContentEvaluationStatus() {
+        return contentEvaluationStatus;
+    }
+
+    public void setContentEvaluationStatus(int contentEvaluationStatus) {
+        this.contentEvaluationStatus = contentEvaluationStatus;
     }
 
     public List<ContentFeedbackResponse> getContentFeedbackResponseList() {

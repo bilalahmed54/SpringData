@@ -21,14 +21,13 @@ public class Project extends BaseDomainModel {
     private List<Content> videos;
 
     public Project() {
-        videos = new ArrayList<>();
+        this.videos = new ArrayList<>();
     }
 
     public Project(String name, String description) {
-
         this.name = name;
-        videos = new ArrayList<>();
         this.description = description;
+        this.videos = new ArrayList<>();
     }
 
     public String getName() {
