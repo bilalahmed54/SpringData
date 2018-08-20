@@ -17,7 +17,7 @@ public class ContentController {
     IContentService iContentService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ContentDTO addVideo(@RequestParam(value = "url", required = true) String url,
+    public ContentDTO save(@RequestParam(value = "url", required = true) String url,
                                @RequestParam(value = "name", required = true) String name,
                                @RequestParam(value = "tags", required = true) String tags,
                                @RequestParam(value = "isPublic", required = true) String isPublic,

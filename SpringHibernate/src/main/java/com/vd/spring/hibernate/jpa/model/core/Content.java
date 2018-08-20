@@ -19,9 +19,9 @@ public class Content extends BaseDomainModel {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @OneToMany
-    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "content_id"))
+    @OneToMany(mappedBy = "content")
+    /*@JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "content_id"))*/
     private List<ContentUser> contentUserList;
 
     public Content() {

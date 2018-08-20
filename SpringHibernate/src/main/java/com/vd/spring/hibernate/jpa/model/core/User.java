@@ -31,9 +31,9 @@ public class User extends BaseDomainModel {
     @Column(name = "location", nullable = false, unique = false)
     private String location;
 
-    @OneToMany
-    @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id")
-            , inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @OneToMany(mappedBy = "user")
+    /*@JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id")
+            , inverseJoinColumns = @JoinColumn(name = "user_id"))*/
     private List<ContentUser> userContentsList;
 
     public User() {

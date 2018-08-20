@@ -9,8 +9,11 @@ import com.vd.spring.hibernate.jpa.model.BaseDomainModel;
 @Table(name = "content_user")
 public class ContentUser extends BaseDomainModel {
 
-    @Column(name = "content_evaluation_status", nullable = false)
+    @Column(name = "content_evaluation_status", nullable = false, columnDefinition = "int default 0")
     private int contentEvaluationStatus;
+
+    @Column(name = "content_join_status", nullable = false, columnDefinition = "int default 0")
+    private int contentJoiningStatus;
 
     @Column(name = "content_circle_type", nullable = false)
     private String contentCircleType;
@@ -22,11 +25,11 @@ public class ContentUser extends BaseDomainModel {
     private RealTimeVideoFeedbackEvaluation realTimeVideoFeedbackEvaluationResult;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "content_id")
+    @JoinColumn(name = "content_id", nullable = false)
     private Content content;
 
     @OneToMany
@@ -82,6 +85,14 @@ public class ContentUser extends BaseDomainModel {
 
     public void setContentCircleType(String contentCircleType) {
         this.contentCircleType = contentCircleType;
+    }
+
+    public int getContentJoiningStatus() {
+        return contentJoiningStatus;
+    }
+
+    public void setContentJoiningStatus(int contentJoiningStatus) {
+        this.contentJoiningStatus = contentJoiningStatus;
     }
 
     public int getContentEvaluationStatus() {

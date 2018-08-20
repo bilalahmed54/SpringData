@@ -46,7 +46,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public ProjectDTO getProjectVideos(@RequestParam(value = "id", required = true) String projectId) {
+    public ProjectDTO get(@RequestParam(value = "id", required = true) String projectId) {
 
         Long longId = Long.parseLong(projectId);
         return iProjectService.get(longId);
