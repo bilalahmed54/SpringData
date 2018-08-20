@@ -1,11 +1,13 @@
 package com.vd.spring.hibernate.jpa.controller;
 
-import com.vd.spring.hibernate.jpa.dto.ProjectDTO;
+import com.vd.spring.hibernate.jpa.dto.project.ProjectDTO;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.vd.spring.hibernate.jpa.dto.content.ContentListDTO;
+import com.vd.spring.hibernate.jpa.dto.project.ProjectListDTO;
 import com.vd.spring.hibernate.jpa.service.Interface.IProjectService;
 
 @RestController
@@ -14,6 +16,11 @@ public class ProjectController {
 
     @Autowired
     IProjectService iProjectService;
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ProjectListDTO list() {
+        return null;
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ProjectDTO save(@RequestParam(value = "name", required = true) String name,
@@ -36,5 +43,12 @@ public class ProjectController {
 
         Long longId = Long.parseLong(id);
         return iProjectService.delete(longId);
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public ProjectDTO getProjectVideos(@RequestParam(value = "id", required = true) String projectId) {
+
+        Long longId = Long.parseLong(projectId);
+        return iProjectService.get(longId);
     }
 }

@@ -12,8 +12,12 @@ public class Content extends BaseDomainModel {
     private String url;
     private String name;
     private String tags;
-    private boolean isPublic;
+    private Boolean isPublic;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     @OneToMany
     @JoinTable(name = "content_user", joinColumns = @JoinColumn(name = "id"),
@@ -21,13 +25,31 @@ public class Content extends BaseDomainModel {
     private List<ContentUser> contentUserList;
 
     public Content() {
+        this.isPublic = false;
         this.contentUserList = new ArrayList<>();
     }
 
     public Content(String name, String description) {
         this.name = name;
+        this.isPublic = false;
         this.description = description;
         this.contentUserList = new ArrayList<>();
+    }
+
+    public Content(String url, String name, String tags, boolean isPublic, String description) {
+        this.url = url;
+        this.name = name;
+        this.tags = tags;
+        this.isPublic = isPublic;
+        this.description = description;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public String getUrl() {

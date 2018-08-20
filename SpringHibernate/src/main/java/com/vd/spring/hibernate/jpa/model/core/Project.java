@@ -15,9 +15,9 @@ public class Project extends BaseDomainModel {
     @Column(name = "description", nullable = true, unique = false)
     private String description;
 
-    @OneToMany
-    @JoinTable(name = "content", joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id"))
+    @OneToMany(mappedBy = "project")
+    /*@JoinTable(name = "content", joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))*/
     private List<Content> videos;
 
     public Project() {
